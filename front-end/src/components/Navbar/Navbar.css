@@ -1,0 +1,21 @@
+.navbar {
+    width: 100%;
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid yellow;
+    width: 25%;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.nav-link:hover {
+    background: grey !important;
+}
+
+.nav-link.active {
+    color: black !important;
+    background: white !important;
+}
