@@ -9,7 +9,7 @@ const TweetNavbar = () => {
         <Navbar bg="primary" variant="dark">
             <Container className="nav-container">
                 <Nav variant="pills" className="navbar">
-                    <NavLink className="nav-link" to="../About">
+                    <NavLink className="nav-link" to="/">
                         Home
                     </NavLink>
                     <NavLink className="nav-link" to="../Showcase">

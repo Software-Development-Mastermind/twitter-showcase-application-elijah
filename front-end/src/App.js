@@ -6,7 +6,7 @@ import About from "./components/About/About";
 import Random from "./components/Random/Random";
 import Showcase from "./components/Showcase/Showcase";
 import TweetNavbar from "./components/Navbar/Navbar";
-import NoPage from "./components/404/NoPage";
+import Error from "./components/404/Error";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -15,10 +15,10 @@ function App() {
             <Header />
             <TweetNavbar />
             <Routes>
-                <Route path="About" element={<About />} />
+                <Route path="/" element={<About />} />
                 <Route path="Random" element={<Random />} />
                 <Route path="Showcase" element={<Showcase />} />
-                <Route path="*" element={<NoPage />} />
+                <Route path="*" element={<Error />} />
             </Routes>
             <Footer />
         </div>

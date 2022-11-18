@@ -7,8 +7,25 @@
     margin-bottom: 25px;
     margin-top: 40px;
 }
-.showcase-body {
+
+.showcase-container {
     border: 2px solid yellow;
     width: 70%;
     margin: auto;
+    text-align: center;
+}
+
+.search-form {
+    border: 1px solid green;
+    padding: 2px;
+}
+
+.search-input {
+    height: 38px;
+    width: 50%;
+    margin: auto;
+}
+
+search-input::focus {
+    outline: none;
 }
