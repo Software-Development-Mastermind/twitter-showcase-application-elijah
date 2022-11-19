@@ -4,15 +4,15 @@ import { Button } from "react-bootstrap";
 
 const Random = () => {
     const [text, setText] = useState("");
-    // const [randomData, setRandomData] = useState("");
-    // useEffect(() => {
-    //     fetch("/randomData")
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             setRandomData(data);
-    //             console.log(data);
-    //         });
-    // }, []);
+    const [randomData, setRandomData] = useState([]);
+    useEffect(() => {
+        fetch("/SearchTweets")
+            .then((res) => res.json())
+            .then((data) => {
+                setRandomData(data);
+                console.log(data);
+            });
+    }, []);
 
     const testArray = [
         "kurzegast",
@@ -34,9 +34,11 @@ const Random = () => {
         <div className="random-container">
             <h1 className="random-header">Random Tweet Page</h1>
             <p>{text}</p>
-            {/* {randomData.data} */}
+            {randomData.map((tweet) => {
+                return <p>{tweet.text}</p>;
+            })}
 
-            <Button onClick={handleClick}>Get A Random Tweet!</Button>
+            <Button onClick={handleClick}>Get A Random Tweet!!!</Button>
         </div>
     );
 };
