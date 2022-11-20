@@ -8,11 +8,6 @@ app = Flask(__name__)
 cors = CORS(app)
 api = Api(app)
 load_dotenv()
-# search_tweets_url = (
-#     "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=nasa&count=5"
-# )
-
-screen_name = "nasa"
 
 api_key = os.getenv("API_KEY")
 api_secret_key = os.getenv("SECRET_API_KEY")
@@ -24,14 +19,30 @@ headers = {"Authorization": f"Bearer {bearer_token}", "Accept": "application/jso
 @app.route("/SearchTweets", methods=["GET"])
 def get_tweets():
     args = request.args
-    print(args)
+    # print(args)
     screen_name = args["screen_name"]
-    tweetResponse = requests.get(
+    tweet_response = requests.get(
         f"https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={screen_name}&count=5",
         headers=headers,
     )
-    print(tweetResponse.content)
-    return tweetResponse.json()
+    print(dir(tweet_response))
+    if tweet_response.ok == True:
+        print("user found")
+        return tweet_response.json()
+    else:
+        return "error"
+
+
+@app.route("/RandomTweet", methods=["GET"])
+def get_random_tweet():
+    random_tweet = request.args
+    random_screen_name = random_tweet["screen_name"]
+    random_tweet_response = requests.get(
+        f"https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={random_screen_name}&count=1",
+        headers=headers,
+    )
+
+    return random_tweet_response.json()
 
 
 if __name__ == "__main__":
