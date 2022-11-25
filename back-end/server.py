@@ -14,36 +14,30 @@ api_secret_key = os.getenv("SECRET_API_KEY")
 bearer_token = os.getenv("BEARER_TOKEN")
 
 headers = {"Authorization": f"Bearer {bearer_token}", "Accept": "application/json"}
+params = {
+        "expansions": "attachments.media_keys,author_id",
+        "media.fields": "url",
+        "tweet.fields": "created_at,public_metrics,entities,text",
+        "user.fields": "username,name,profile_image_url",
+        "tweet_mode": "extended"
+    }
 
 
 @app.route("/SearchTweets", methods=["GET"])
 def get_tweets():
     args = request.args
-    # print(args)
-    screen_name = args["screen_name"]
+    user_input = args["userInput"]
+   
+    url = f"https://api.twitter.com/1.1/search/tweets.json?q=from:{user_input}"
     tweet_response = requests.get(
-        f"https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={screen_name}&count=5",
+        url,
         headers=headers,
+        params=params,
     )
-    print(dir(tweet_response))
-    if tweet_response.ok == True:
-        print("user found")
-        return tweet_response.json()
-    else:
-        return "error"
-
-
-@app.route("/RandomTweet", methods=["GET"])
-def get_random_tweet():
-    random_tweet = request.args
-    random_screen_name = random_tweet["screen_name"]
-    random_tweet_response = requests.get(
-        f"https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={random_screen_name}&count=1",
-        headers=headers,
-    )
-
-    return random_tweet_response.json()
+    tweet_data = tweet_response.json()
+    return tweet_data
+   
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=5001, debug=True)

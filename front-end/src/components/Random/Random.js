@@ -1,12 +1,13 @@
 import "./Random.css";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import axios from "axios";
 
 const Random = () => {
     const [text, setText] = useState("");
     const [randomData, setRandomData] = useState([]);
     useEffect(() => {
-        fetch("/SearchTweets")
+        axios.get("/SearchTweets")
             .then((res) => res.json())
             .then((data) => {
                 setRandomData(data);
@@ -34,9 +35,9 @@ const Random = () => {
         <div className="random-container">
             <h1 className="random-header">Random Tweet Page</h1>
             <p>{text}</p>
-            {randomData.map((tweet) => {
+            {/* {randomData.map((tweet) => {
                 return <p>{tweet.text}</p>;
-            })}
+            })} */}
 
             <Button onClick={handleClick}>Get A Random Tweet!!!</Button>
         </div>

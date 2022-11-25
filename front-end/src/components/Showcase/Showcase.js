@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./Showcase.css";
 import axios from "axios";
@@ -10,12 +10,30 @@ const Showcase = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .get("/SearchTweets", { params: { screen_name: searchInput } })
+            .get("/SearchTweets", { params: { userInput : searchInput } })
             .then((tweets) => {
-                tweets = tweets.data;
-                setTweetData(tweets);
+                console.log(tweets)
+                setTweetData(tweets.data.statuses);
             });
+
     };
+
+    const display_tweets = () => {
+        const tweet_list = tweetData.map((tweet)=> {
+            return (
+                <div>
+                    {tweet.user.screen_name}
+                    {tweet.user.name}
+                    {tweet.user.profile_image_url_https}
+                    {tweet.full_text}
+                    {tweet.favorite_count}
+                    {tweet.retweet_count}
+                </div>
+            )
+
+        })
+        return tweet_list
+    }
 
     return (
         <div className="showcase-container">
@@ -31,17 +49,9 @@ const Showcase = () => {
                     Search User
                 </Button>
             </Form>
-            {tweetData.map((tweet) => {
-                return (
-                    <>
-                        <p>{tweet.text}</p>
-                        <p> Likes: {tweet.favorite_count}</p>
-                        <p> Retweets: {tweet.retweet_count}</p>
-                        <p> User @{tweet.user.name}</p>
-                        {/* {console.log(tweet)} */}
-                    </>
-                );
-            })}
+            <div>
+            {display_tweets()}
+            </div>
         </div>
     );
 };
