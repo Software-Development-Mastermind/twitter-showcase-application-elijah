@@ -27,14 +27,17 @@ params = {
 def get_tweets():
     args = request.args
     user_input = args["userInput"]
-   
-    url = f"https://api.twitter.com/1.1/search/tweets.json?q=from:{user_input}"
-    tweet_response = requests.get(
-        url,
-        headers=headers,
-        params=params,
-    )
+
+    if user_input.startswith("@"):
+        search = f'from:{user_input[1:]}'
+    else:
+        search = f'{user_input} -is:retweet -is:reply'
+
+    url = f"https://api.twitter.com/1.1/search/tweets.json?q={search}"
+
+    tweet_response = requests.get(url, headers=headers, params=params)
     tweet_data = tweet_response.json()
+
     return tweet_data
    
 
