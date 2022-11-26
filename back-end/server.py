@@ -19,7 +19,8 @@ params = {
         "media.fields": "url",
         "tweet.fields": "created_at,public_metrics,entities,text",
         "user.fields": "username,name,profile_image_url",
-        "tweet_mode": "extended"
+        "tweet_mode": "extended",
+        "count": "10"
     }
 
 
@@ -39,6 +40,18 @@ def get_tweets():
     tweet_data = tweet_response.json()
 
     return tweet_data
+
+@app.route("/RandomTweet", methods=["GET"])
+def get_random_tweet():
+    args = request.args
+    random_user= args['random_user']
+
+    url = f"https://api.twitter.com/1.1/search/tweets.json?q=from:{random_user}"
+
+    random_tweet_response = requests.get(url, headers=headers, params=params)
+    random_tweet_data = random_tweet_response.json()
+
+    return random_tweet_data
    
 
 

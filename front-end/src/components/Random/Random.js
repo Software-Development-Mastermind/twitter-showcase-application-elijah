@@ -5,31 +5,30 @@ import axios from "axios";
 
 const Random = () => {
     const [text, setText] = useState("");
-    const [randomData, setRandomData] = useState([]);
-    useEffect(() => {
-        axios.get("/SearchTweets")
-            .then((res) => res.json())
-            .then((data) => {
-                setRandomData(data);
-                console.log(data);
-            });
-    }, []);
-
-    const testArray = [
+    
+    const favorite_twitter_users = [
         "kurzegast",
         "Jordan Peterson",
         "Tim Kennedy",
         "Mikael Akerfeldt",
         "Ben Eller",
-    ]; //This will be replaced with user ID's to send GET requests to pull one of their tweets
+    ];
 
     const handleClick = (e) => {
         e.preventDefault();
-        const randomUser = Math.floor(Math.random() * testArray.length);
-        const result = testArray[randomUser];
+        const randomUser = Math.floor(Math.random() * favorite_twitter_users.length);
+        const result = favorite_twitter_users[randomUser];
         setText(result);
-        console.log(result);
+        
+        getRandomData(result)
     };
+
+    const getRandomData = (randomUser) => {
+        axios.get("/RandomTweet", { params: { random_user: randomUser }}).then((randomTweet) => {
+            console.log(randomTweet)
+        })
+
+    }
 
     return (
         <div className="random-container">
