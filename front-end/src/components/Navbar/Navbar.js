@@ -7,8 +7,16 @@ import "./Navbar.css";
 const TweetNavbar = () => {
     return (
         <Navbar bg="primary" variant="dark">
+            <span>
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/1177/1177491.png"
+                    alt="navbar icon"
+                    className="nav-icon"
+                ></img>
+            </span>
+            <div className="nav-header">Twitter Showcase App</div>
             <Container className="nav-container">
-                <Nav variant="pills" className="navbar">
+                <Nav variant="pills" className="navbar-links">
                     <NavLink className="nav-link" to="/">
                         Home
                     </NavLink>
