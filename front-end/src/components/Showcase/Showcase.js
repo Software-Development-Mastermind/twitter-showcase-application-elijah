@@ -17,7 +17,6 @@ const Showcase = () => {
             .get("/SearchTweets", { params: { userInput: searchInput } })
             .then((tweets) => {
                 setTweetData(tweets.data.statuses);
-                console.log(tweetData);
             });
     };
 
@@ -83,12 +82,18 @@ const Showcase = () => {
                 </div>
             );
         });
-        if (tweet_list.length > 0) {
-            return tweet_list;
-        } else if (tweet_list.length === 0 && userHasSearched === true) {
-            return <div>Error, no matches found</div>;
-        } else
+        if (userHasSearched === false) {
             return <div>Search for tweets by username or by text-match </div>;
+        } else if (tweet_list.length > 0 && userHasSearched === true) {
+            return tweet_list;
+        } else {
+            return (
+                <h2>
+                    Error, no user or tweet matches found. Please refine your
+                    search and try again.
+                </h2>
+            );
+        }
     };
 
     return (
