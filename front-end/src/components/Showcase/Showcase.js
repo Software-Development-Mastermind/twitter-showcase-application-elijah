@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./Showcase.css";
 import axios from "axios";
+import likes from "./love.png";
+import retweets from "./repost.png";
 
 const Showcase = () => {
     const [searchInput, setSearchInput] = useState("");
@@ -59,9 +61,19 @@ const Showcase = () => {
                         </div>
                         <div className="tweet-metrics">
                             <span className="tweet-retweet-count">
+                                <img
+                                    src={retweets}
+                                    className="tweet-retweets"
+                                    alt="retweets"
+                                />
                                 {tweet.retweet_count}
                             </span>
                             <span className="tweet-favorite-count">
+                                <img
+                                    src={likes}
+                                    className="tweet-likes"
+                                    alt="likes"
+                                />
                                 {tweet.favorite_count}
                             </span>
                         </div>
