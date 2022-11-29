@@ -1,13 +1,13 @@
 .about-container {
     border: 2px solid black;
-    width: 45%;
+    width: 70%;
     margin: auto;
     padding-bottom: 50px;
-
+    background-color: whitesmoke;
+    border-radius: 20px;
 }
 
 .about-header {
-
     text-align: center;
     width: 80%;
     margin-left: auto;
@@ -16,7 +16,6 @@
     margin-top: 40px;
 }
 .about-body {
-    border: 2px solid yellow;
     width: 60%;
     margin: auto;
 }

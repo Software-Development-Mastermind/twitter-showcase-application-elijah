@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./Showcase.css";
 import axios from "axios";
-import likes from "./love.png";
-import retweets from "./repost.png";
+import likes from "../Images/love.png";
+import retweets from "../Images/repost.png";
 
 const Showcase = () => {
     const [searchInput, setSearchInput] = useState("");

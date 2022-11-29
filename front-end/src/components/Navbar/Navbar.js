@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import navbaricon from "../Images/navbaricon.png";
 import "./Navbar.css";
 
 const TweetNavbar = () => {
@@ -9,7 +10,7 @@ const TweetNavbar = () => {
         <Navbar bg="primary" variant="dark">
             <span>
                 <img
-                    src="https://cdn-icons-png.flaticon.com/512/1177/1177491.png"
+                    src={navbaricon}
                     alt="navbar icon"
                     className="nav-icon"
                 ></img>

@@ -4,32 +4,23 @@
     margin-right: auto;
     margin-top: 40px;
     text-align: center;
-    border: 2px solid red;
     background-color: white;
     border-radius: 20px;
 }
 
 .random-header {
-    border: 2px solid orange;
     text-align: center;
     width: 45%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 25px;
-}
-.random-text {
-    border: 2px solid yellow;
-    width: 70%;
-    margin: auto;
+    padding-top: 10px;
 }
 
-.showcase-header {
-    text-align: center;
-    width: 45%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 25px;
-    margin-top: 40px;
+.random-tweet-text {
+    width: 70%;
+    margin: auto;
+    padding-bottom: 10px;
 }
 
 .search-form {

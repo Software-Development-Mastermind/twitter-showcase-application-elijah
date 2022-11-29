@@ -2,8 +2,8 @@ import "./Random.css";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 import axios from "axios";
-import likes from "./love.png";
-import retweets from "./repost.png";
+import likes from "../Images/love.png";
+import retweets from "../Images/repost.png";
 
 const Random = () => {
     const [randomUserData, setRandomUserData] = useState([]);
@@ -101,7 +101,12 @@ const Random = () => {
 
     return (
         <div className="random-container">
-            <h1 className="random-header">Random Tweet Page</h1>
+            <h1 className="random-header">Tweet Randomizer!</h1>
+            <h3 className="random-tweet-text">
+                Click the button to get a random tweet from Neil Degrasse Tyson,
+                Scientific American, IFLScience, NASA, and the American Natural
+                History Museum
+            </h3>
             <div className="random-tweet-container">
                 {display_random_tweets()}
             </div>
