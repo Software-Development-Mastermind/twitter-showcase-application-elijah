@@ -12,12 +12,20 @@ const Showcase = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (searchInput.length > 0) setUserHasSearched(true);
-        axios
-            .get("/SearchTweets", { params: { userInput: searchInput } })
-            .then((tweets) => {
-                setTweetData(tweets.data.statuses);
-            });
+        getTweets();
+    };
+
+    const getTweets = async () => {
+        try {
+            const response = await axios
+                .get("/SearchTweets", { params: { userInput: searchInput } })
+                .then((tweets) => {
+                    setTweetData(tweets.data.statuses);
+                    setUserHasSearched(true);
+                });
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     const renderExtendedEntities = (tweet) => {
@@ -76,23 +84,18 @@ const Showcase = () => {
                                 {tweet.favorite_count}
                             </span>
                         </div>
-
                         {renderExtendedEntities(tweet)}
                     </span>
                 </div>
             );
         });
-        if (userHasSearched === false) {
-            return <div>Search for tweets by username or by text-match </div>;
-        } else if (tweet_list.length > 0 && userHasSearched === true) {
+        if (tweet_list.length > 0 && userHasSearched) {
             return tweet_list;
+        }
+        if (tweet_list.length === 0 && userHasSearched) {
+            return "Error, no user found";
         } else {
-            return (
-                <h2>
-                    Error, no user or tweet matches found. Please refine your
-                    search and try again.
-                </h2>
-            );
+            return "Search for a twitter user";
         }
     };
 
