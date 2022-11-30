@@ -4,7 +4,7 @@ import "./Showcase.css";
 import axios from "axios";
 import likes from "../Images/love.png";
 import retweets from "../Images/repost.png";
-
+import search from "../Images/search.jpg";
 const Showcase = () => {
     const [searchInput, setSearchInput] = useState("");
     const [userHasSearched, setUserHasSearched] = useState(false);
@@ -93,12 +93,25 @@ const Showcase = () => {
             return tweet_list;
         }
         if (tweet_list.length === 0 && userHasSearched) {
-            return "Error, no user found";
+            return (
+                <h3>
+                    Error, there were no matches for your search. Please refine
+                    it and try again.
+                </h3>
+            );
         } else {
-            return "Search for a twitter user";
+            return (
+                <>
+                    <h3>Search for a Twitter user or a text string</h3>
+                    <img
+                        src={search}
+                        alt="search"
+                        className="search-image"
+                    ></img>
+                </>
+            );
         }
     };
-
     return (
         <div className="showcase-container">
             <Form className="search-form" onSubmit={handleSubmit}>

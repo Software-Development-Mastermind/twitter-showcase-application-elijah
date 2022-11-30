@@ -22,10 +22,10 @@ const TweetNavbar = () => {
                         Home
                     </NavLink>
                     <NavLink className="nav-link" to="../Showcase">
-                        Showcase
+                        Tweet Search
                     </NavLink>
                     <NavLink className="nav-link" to="../Random">
-                        Random Tweets
+                        Random Tweet
                     </NavLink>
                 </Nav>
             </Container>

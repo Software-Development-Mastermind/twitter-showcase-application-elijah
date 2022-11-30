@@ -4,7 +4,14 @@
     text-align: center;
     background: white;
     border-radius: 20px;
-    height: 110px;
+    height: 200px;
     padding-top: 10px;
     padding-bottom: 10px;
+    background-image: url("../Images/kiwi.jpeg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

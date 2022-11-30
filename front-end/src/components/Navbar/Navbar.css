@@ -40,7 +40,8 @@
 }
 
 .nav-link:hover {
-    background: grey !important;
+    background: #cac4ceff !important;
+    color: black !important;
 }
 
 .nav-link.active {
